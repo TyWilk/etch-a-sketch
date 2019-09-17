@@ -2,6 +2,11 @@ let cellRoot = 16;
 const container = document.querySelector(".container");
 const button = document.querySelector("button")
 
+function getRandomRGBvalue() {
+    let num = Math.floor(Math.random() * 256);
+    return num;
+}
+
 function populateCanvas() {
     container.style.cssText = `grid-template-columns: repeat(${cellRoot}, 1fr)`;
     for (i = 0; i < cellRoot * cellRoot; i++) {
@@ -15,7 +20,8 @@ function colorCanvas() {
     let divs = container.querySelectorAll("div");
     divs.forEach((div) => {
         div.addEventListener("mouseenter", (e) => {
-            e.target.style.backgroundColor = "blue";
+            e.target.style.transition = "background, 0.5s"
+            e.target.style.backgroundColor = `rgb(${getRandomRGBvalue()}, ${getRandomRGBvalue()}, ${getRandomRGBvalue()})`;
         })
     })
 }
