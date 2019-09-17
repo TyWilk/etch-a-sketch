@@ -2,3 +2,19 @@
     margin: 0;
     padding: 0;
 }
+.control-container {
+    display: flex;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    height: 80vh;
+    width: 50vw;
+    display: grid;
+    border: 2px solid black;
+    margin: 0 auto 10vh auto;
+}
+.container > div {
+    background: rgb(204, 114, 114);
+}
