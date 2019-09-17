@@ -19,9 +19,18 @@ populateCanvas();
 function colorCanvas() {
     let divs = container.querySelectorAll("div");
     divs.forEach((div) => {
-        div.addEventListener("mouseenter", (e) => {
-            e.target.style.transition = "background, 0.5s"
-            e.target.style.backgroundColor = `rgb(${getRandomRGBvalue()}, ${getRandomRGBvalue()}, ${getRandomRGBvalue()})`;
+        div.addEventListener("mouseover", (e) => {
+            e.target.style.transition = "background, 0.2s";
+            // logic to progressively darken the div on mouseover
+            let currentColor = e.target.style.backgroundColor;
+            if (!currentColor) {
+                e.target.style.backgroundColor = `rgb(${255 - 26}, ${255 - 26}, ${255 - 26})`;
+            } else {
+                let rgbValue = currentColor.substring(currentColor.lastIndexOf("(") + 1, currentColor.indexOf(","));
+                e.target.style.backgroundColor = `rgb(${rgbValue - 26}, ${rgbValue - 26}, ${rgbValue - 26})`;
+            }   
+            // logic to fill div with a random color *must change mouseover to mouseenter 
+            // e.target.style.backgroundColor = `rgb(${getRandomRGBvalue()}, ${getRandomRGBvalue()}, ${getRandomRGBvalue()})`;
         })
     })
 }
